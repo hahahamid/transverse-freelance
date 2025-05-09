@@ -1,0 +1,114 @@
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
+import image from "../assets/local1.png";
+import image2 from "../assets/local2.png";
+
+const Localization = () => {
+  const [isHoveredTitle, setIsHoveredTitle] = useState(false); // Track hover state for title (Translation/अनुवाद)
+  const [isHoveredDescription, setIsHoveredDescription] = useState(false); // Track hover state for description
+
+  // Spring animation settings for a faster transition
+  const springSettings = {
+    type: "spring",
+    mass: 1,
+    stiffness: 200, // Increased stiffness for a quicker snap
+    damping: 20, // Slightly increased damping to reduce bounciness
+  };
+
+  return (
+    <div className="grid grid-cols-2 bg-white py-14">
+      <div className="flex flex-col items-start text-[88px] pl-20 space-y-28">
+        {/* Container for the title text with relative positioning */}
+        <div className="relative h-[76px]">
+          <motion.div
+            onMouseEnter={() => setIsHoveredTitle(true)} // Show Hindi title on hover
+            onMouseLeave={() => setIsHoveredTitle(false)} // Show English title on hover out
+          >
+            <AnimatePresence mode="sync">
+              {isHoveredTitle ? (
+                <motion.div
+                  key="hindi-title"
+                  initial={{ opacity: 0, y: 10 }} // Start below
+                  animate={{ opacity: 1, y: 0 }} // Move to position
+                  exit={{ opacity: 0, y: 10 }} // Exit below
+                  transition={{ ...springSettings, delay: 0.001 }} // 1ms delay
+                  className="absolute"
+                >
+                  स्थानीयकरण
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="english-title"
+                  initial={{ opacity: 0, y: 10 }} // Start below
+                  animate={{ opacity: 1, y: 0 }} // Move to position
+                  exit={{ opacity: 0, y: 10 }} // Exit below
+                  transition={{ ...springSettings, delay: 0.001 }} // 1ms delay
+                  className="absolute font-urbanist"
+                >
+                  Localization
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+        {/* Image below the text */}
+        <div>
+          <img src={image} alt="" />
+        </div>
+      </div>
+
+      <div className="flex flex-col items-start text-[16px] pl-20 gap-y-10">
+        <div>
+          <img src={image2} alt="" />
+        </div>
+        {/* Container for the description text */}
+        <div className="relative w-full ">
+          <motion.div
+            onMouseEnter={() => setIsHoveredDescription(true)} // Show Hindi description on hover
+            onMouseLeave={() => setIsHoveredDescription(false)} // Show English description on hover out
+          >
+            <AnimatePresence mode="sync">
+              {isHoveredDescription ? (
+                <motion.div
+                  key="hindi-description"
+                  initial={{ opacity: 0, y: 10 }} // Start below
+                  animate={{ opacity: 1, y: 0 }} // Move to position
+                  exit={{ opacity: 0, y: 10 }} // Exit below
+                  transition={{ ...springSettings, delay: 0.001 }} // 1ms delay
+                  className="absolute tracking-wide"
+                >
+                  संस्कृति-संवेदनशील स्थानीयकरण के साथ नब्ज़ों को बोलें। हम
+                  <br />
+                  आपके उत्पादों और सेवाओं को स्थानीय परंपराओं और प्राथमिकताओं के
+                  <br />
+                  अनुरूप बनाते हैं, साथ ही सबसे स्थापित करते हैं जो वैश्विक
+                  विकास को तेज <br />
+                  करते हैं।
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="english-description"
+                  initial={{ opacity: 0, y: 10 }} // Start below
+                  animate={{ opacity: 1, y: 0 }} // Move to position
+                  exit={{ opacity: 0, y: 10 }} // Exit below
+                  transition={{ ...springSettings, delay: 0.001 }} // 1ms delay
+                  className="absolute tracking-wide font-poppins"
+                >
+                  Unlock new markets with culturally attuned localization. We
+                  <br />
+                  align your products and services with local customs and
+                  <br />
+                  preferences, building meaningful connections that accelerate
+                  <br />
+                  global growth.
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Localization;
