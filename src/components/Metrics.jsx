@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const Metrics = () => {
   // Animation variants for the boxes
@@ -12,6 +12,12 @@ const Metrics = () => {
   const textVariants = {
     hidden: { opacity: 0, y: 20 }, // Start invisible and slightly below
     visible: { opacity: 1, y: 0 }, // Fade in and slide up
+  };
+
+  // Animation variants for the centered text
+  const centerTextVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   };
 
   // Configuration for each box
@@ -50,8 +56,15 @@ const Metrics = () => {
     },
   ];
 
+  // Use Framer Motion's useInView to detect when component is in view
+  const ref = React.useRef(null);
+  const inView = useInView(ref, {
+    amount: 0.5, // Trigger when 50% of the component is visible
+    once: true, // Only trigger once
+  });
+
   return (
-    <div className="flex gap-x-20 justify-between items-start p-20">
+    <div ref={ref} className="flex gap-x-20 justify-between items-start p-20">
       {boxConfigs.map((config, index) => (
         <div key={index} className="flex flex-col items-center">
           <motion.div
@@ -59,7 +72,7 @@ const Metrics = () => {
             style={{ borderColor: config.borderColor, transformOrigin: "center" }}
             variants={boxVariants}
             initial="hidden"
-            animate="visible"
+            animate={inView ? "visible" : "hidden"}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.7 }}
           >
             <motion.div
@@ -72,19 +85,24 @@ const Metrics = () => {
                     ? "circle(0% at 0% 100%)"
                     : "circle(0% at 100% 0%)",
               }}
-              animate={{
-                clipPath:
-                  config.fillDirection === "bottom-left"
-                    ? "circle(150% at 0% 100%)"
-                    : "circle(150% at 100% 0%)",
-              }}
+              animate={
+                inView
+                  ? {
+                      clipPath:
+                        config.fillDirection === "bottom-left"
+                          ? "circle(150% at 0% 100%)"
+                          : "circle(150% at 100% 0%)",
+                    }
+                  : {}
+              }
               transition={{ duration: 1, delay: 2, ease: "easeOut" }}
             />
             <motion.span
               className="absolute inset-0 flex items-center justify-center font-semibold font-poppins text-xl"
               style={{ color: config.textColor }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              variants={centerTextVariants}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
               transition={{ duration: 0.5, delay: 3 }}
             >
               {config.centerText}
@@ -94,7 +112,7 @@ const Metrics = () => {
             className="mt-10 text-lg font-medium text-gray-800"
             variants={textVariants}
             initial="hidden"
-            animate="visible"
+            animate={inView ? "visible" : "hidden"}
             transition={{ duration: 0.4, ease: "easeOut", delay: 1.3 }}
           >
             {config.text}
