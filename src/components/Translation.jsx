@@ -4,15 +4,28 @@ import image from "../assets/translation.png";
 import image2 from "../assets/trans_2.png";
 
 const Translation = () => {
-  const [isHoveredTitle, setIsHoveredTitle] = useState(false); // Track hover state for title (Translation/अनुवाद)
+  const [isHoveredTitle, setIsHoveredTitle] = useState(false); // Track hover state for title
   const [isHoveredDescription, setIsHoveredDescription] = useState(false); // Track hover state for description
 
-  // Spring animation settings for a faster transition
+  // Spring animation settings for hover transitions
   const springSettings = {
     type: "spring",
     mass: 1,
-    stiffness: 200, // Increased stiffness for a quicker snap
-    damping: 20, // Slightly increased damping to reduce bounciness
+    stiffness: 200,
+    damping: 20,
+  };
+
+  // Animation settings for the initial rise effect
+  const riseAnimation = {
+    initial: { opacity: 0, y: 50 }, // Start 50px below and invisible
+    animate: { opacity: 1, y: 0 }, // Move to original position and fully visible
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 7,
+      duration: 0.5, // Smooth duration for the rise
+      delay: 0.3, // Add 0.3s delay for the animation
+    },
   };
 
   return (
@@ -21,17 +34,21 @@ const Translation = () => {
         {/* Container for the title text with relative positioning */}
         <div className="relative h-[76px]">
           <motion.div
-            onMouseEnter={() => setIsHoveredTitle(true)} // Show Hindi title on hover
-            onMouseLeave={() => setIsHoveredTitle(false)} // Show English title on hover out
+            onMouseEnter={() => setIsHoveredTitle(true)}
+            onMouseLeave={() => setIsHoveredTitle(false)}
+            initial={riseAnimation.initial} // Explicitly set initial state
+            whileInView={riseAnimation.animate} // Use whileInView for viewport detection
+            transition={riseAnimation.transition} // Apply transition with delay
+            viewport={{ once: true, amount: 0.5 }} // Trigger when 50% of component is in view
           >
             <AnimatePresence mode="sync">
               {isHoveredTitle ? (
                 <motion.div
                   key="hindi-title"
-                  initial={{ opacity: 0, y: 10 }} // Start below
-                  animate={{ opacity: 1, y: 0 }} // Move to position
-                  exit={{ opacity: 0, y: 10 }} // Exit below
-                  transition={{ ...springSettings, delay: 0.001 }} // 1ms delay
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ ...springSettings, delay: 0.001 }}
                   className="absolute"
                 >
                   अनुवाद
@@ -39,10 +56,10 @@ const Translation = () => {
               ) : (
                 <motion.div
                   key="english-title"
-                  initial={{ opacity: 0, y: 10 }} // Start below
-                  animate={{ opacity: 1, y: 0 }} // Move to position
-                  exit={{ opacity: 0, y: 10 }} // Exit below
-                  transition={{ ...springSettings, delay: 0.001 }} // 1ms delay
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ ...springSettings, delay: 0.001 }}
                   className="absolute font-urbanist"
                 >
                   Translation
@@ -62,19 +79,23 @@ const Translation = () => {
           <img src={image2} alt="" />
         </div>
         {/* Container for the description text */}
-        <div className="relative w-full ">
+        <div className="relative w-full">
           <motion.div
-            onMouseEnter={() => setIsHoveredDescription(true)} // Show Hindi description on hover
-            onMouseLeave={() => setIsHoveredDescription(false)} // Show English description on hover out
+            onMouseEnter={() => setIsHoveredDescription(true)}
+            onMouseLeave={() => setIsHoveredDescription(false)}
+            initial={riseAnimation.initial} // Explicitly set initial state
+            whileInView={riseAnimation.animate} // Use whileInView for viewport detection
+            transition={riseAnimation.transition} // Apply transition with delay
+            viewport={{ once: true, amount: 0.5 }} // Trigger when 50% of component is in view
           >
             <AnimatePresence mode="sync">
               {isHoveredDescription ? (
                 <motion.div
                   key="hindi-description"
-                  initial={{ opacity: 0, y: 10 }} // Start below
-                  animate={{ opacity: 1, y: 0 }} // Move to position
-                  exit={{ opacity: 0, y: 10 }} // Exit below
-                  transition={{ ...springSettings, delay: 0.001 }} // 1ms delay
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ ...springSettings, delay: 0.001 }}
                   className="absolute tracking-wide"
                 >
                   अपने वैश्विक सफलता को सटीक और विश्वसनीय अनुवाद के साथ आगे
@@ -88,10 +109,10 @@ const Translation = () => {
               ) : (
                 <motion.div
                   key="english-description"
-                  initial={{ opacity: 0, y: 10 }} // Start below
-                  animate={{ opacity: 1, y: 0 }} // Move to position
-                  exit={{ opacity: 0, y: 10 }} // Exit below
-                  transition={{ ...springSettings, delay: 0.001 }} // 1ms delay
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ ...springSettings, delay: 0.001 }}
                   className="absolute tracking-wide font-poppins"
                 >
                   Drive your global success with precise, reliable translations.

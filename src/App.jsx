@@ -1,4 +1,5 @@
 import "./App.css";
+import AnimatedSection from "./components/AnimatedSection";
 import Clients from "./components/clients";
 import Divider from "./components/Divider";
 import Footer from "./components/Footer";
@@ -18,19 +19,33 @@ function App() {
   return (
     <>
       <Navbar />
-      <Hero />
+      {/* <AnimatedSection> */}
+        <Hero />
+      {/* </AnimatedSection> */}
       <SubHero />
       <Translation />
       <Localization />
       <Language />
       <Tele />
-      <Divider />
-      <Metrics />
+      <AnimatedSection>
+        <Divider />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Metrics />
+      </AnimatedSection>
       <Patrons />
-      <Clients />
-      <Gallery />
-      <Separator />
-      <Footer />
+      <AnimatedSection>
+        <Clients />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Gallery />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Separator />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Footer />
+      </AnimatedSection>
     </>
   );
 }

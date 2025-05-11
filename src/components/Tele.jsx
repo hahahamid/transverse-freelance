@@ -15,6 +15,18 @@ const Tele = () => {
     damping: 20, // Slightly increased damping to reduce bounciness
   };
 
+  const riseAnimation = {
+    initial: { opacity: 0, y: 50 }, // Start 50px below and invisible
+    animate: { opacity: 1, y: 0 }, // Move to original position and fully visible
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 7,
+      duration: 0.5, // Smooth duration for the rise
+      delay: 0.3, // Add 0.3s delay for the animation
+    },
+  };
+
   return (
     <div className="grid grid-cols-2 bg-white py-14">
       <div className="flex flex-col items-start text-[88px] pl-20 space-y-28">
@@ -23,6 +35,10 @@ const Tele = () => {
           <motion.div
             onMouseEnter={() => setIsHoveredTitle(true)} // Show Hindi title on hover
             onMouseLeave={() => setIsHoveredTitle(false)} // Show English title on hover out
+            initial={riseAnimation.initial} // Explicitly set initial state
+            whileInView={riseAnimation.animate} // Use whileInView for viewport detection
+            transition={riseAnimation.transition} // Apply transition with delay
+            viewport={{ once: true, amount: 0.5 }} // Trigger when 50% of component is in view
           >
             <AnimatePresence mode="sync">
               {isHoveredTitle ? (
@@ -66,6 +82,10 @@ const Tele = () => {
           <motion.div
             onMouseEnter={() => setIsHoveredDescription(true)} // Show Hindi description on hover
             onMouseLeave={() => setIsHoveredDescription(false)} // Show English description on hover out
+            initial={riseAnimation.initial} // Explicitly set initial state
+            whileInView={riseAnimation.animate} // Use whileInView for viewport detection
+            transition={riseAnimation.transition} // Apply transition with delay
+            viewport={{ once: true, amount: 0.5 }} // Trigger when 50% of component is in view
           >
             <AnimatePresence mode="sync">
               {isHoveredDescription ? (
