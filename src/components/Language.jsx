@@ -86,7 +86,7 @@ const Language = () => {
             whileInView={{ scaleX: 1 }} // Scale to full width
             transition={{
               type: "spring",
-              stiffness: 150,
+              stiffness: 70,
               damping: 10,
               duration: 0.5, // Smooth duration
               delay: 0.7, // Delay to sync with other animations
@@ -100,7 +100,7 @@ const Language = () => {
             whileInView={{ scaleX: 1 }} // Scale to full width
             transition={{
               type: "spring",
-              stiffness: 150,
+              stiffness: 70,
               damping: 10,
               duration: 0.5, // Smooth duration
               delay: 0.7, // Delay to sync with other animations
@@ -124,7 +124,7 @@ const Language = () => {
             whileInView={{ scaleX: 1 }} // Scale to full width
             transition={{
               type: "spring",
-              stiffness: 150,
+              stiffness: 70,
               damping: 10,
               duration: 0.5, // Smooth duration
               delay: 0.7, // Delay to sync with other animations
@@ -138,7 +138,7 @@ const Language = () => {
             whileInView={{ scaleX: 1 }} // Scale to full width
             transition={{
               type: "spring",
-              stiffness: 150,
+              stiffness: 70,
               damping: 10,
               duration: 0.5, // Smooth duration
               delay: 0.7, // Delay to sync with other animations
@@ -152,7 +152,7 @@ const Language = () => {
             whileInView={{ scaleX: 1 }} // Scale to full width
             transition={{
               type: "spring",
-              stiffness: 150,
+              stiffness: 70,
               damping: 10,
               duration: 0.5, // Smooth duration
               delay: 0.7, // Delay to sync with other animations
