@@ -71,18 +71,95 @@ const Language = () => {
           </motion.div>
         </div>
         {/* Image below the text */}
-        <div className="pt-20">
-          <img src={image} className="pl-12" alt="" />
-          <img src={image} alt="" />
-        </div>
+
+        <motion.div
+          className="pt-20"
+          initial={{ opacity: 1 }} // Ensure container is visible
+          whileInView={{ opacity: 1 }} // No animation on container itself
+          viewport={{ once: true, amount: 0.5 }} // Trigger when 50% in view
+        >
+          <motion.img
+            src={image}
+            className="pl-12"
+            alt=""
+            initial={{ scaleX: 0, originX: 0 }} // Start scaled down from the left
+            whileInView={{ scaleX: 1 }} // Scale to full width
+            transition={{
+              type: "spring",
+              stiffness: 150,
+              damping: 10,
+              duration: 0.5, // Smooth duration
+              delay: 0.7, // Delay to sync with other animations
+            }}
+            viewport={{ once: true, amount: 0.5 }} // Individual viewport trigger as fallback
+          />
+          <motion.img
+            src={image}
+            alt=""
+            initial={{ scaleX: 0, originX: 0 }} // Start scaled down from the left
+            whileInView={{ scaleX: 1 }} // Scale to full width
+            transition={{
+              type: "spring",
+              stiffness: 150,
+              damping: 10,
+              duration: 0.5, // Smooth duration
+              delay: 0.7, // Delay to sync with other animations
+            }}
+            viewport={{ once: true, amount: 0.5 }} // Individual viewport trigger as fallback
+          />
+        </motion.div>
       </div>
 
       <div className="flex flex-col items-start text-[16px] pl-20 gap-y-20">
-        <div className="flex flex-col justify-center items-center">
-          <img src={image2} alt="" />
-          <img src={image3} alt="" />
-          <img src={image2} alt="" />
-        </div>
+        <motion.div
+          className="flex flex-col justify-center items-center"
+          initial={{ opacity: 1 }} // Ensure container is visible
+          whileInView={{ opacity: 1 }} // No animation on container itself
+          viewport={{ once: true, amount: 0.5 }} // Trigger when 50% in view
+        >
+          <motion.img
+            src={image2}
+            alt=""
+            initial={{ scaleX: 0, originX: 1 }} // Start scaled down from the right
+            whileInView={{ scaleX: 1 }} // Scale to full width
+            transition={{
+              type: "spring",
+              stiffness: 150,
+              damping: 10,
+              duration: 0.5, // Smooth duration
+              delay: 0.7, // Delay to sync with other animations
+            }}
+            viewport={{ once: true, amount: 0.5 }} // Individual viewport trigger as fallback
+          />
+          <motion.img
+            src={image3}
+            alt=""
+            initial={{ scaleX: 0, originX: 1 }} // Start scaled down from the right
+            whileInView={{ scaleX: 1 }} // Scale to full width
+            transition={{
+              type: "spring",
+              stiffness: 150,
+              damping: 10,
+              duration: 0.5, // Smooth duration
+              delay: 0.7, // Delay to sync with other animations
+            }}
+            viewport={{ once: true, amount: 0.5 }} // Individual viewport trigger as fallback
+          />
+          <motion.img
+            src={image2}
+            alt=""
+            initial={{ scaleX: 0, originX: 1 }} // Start scaled down from the right
+            whileInView={{ scaleX: 1 }} // Scale to full width
+            transition={{
+              type: "spring",
+              stiffness: 150,
+              damping: 10,
+              duration: 0.5, // Smooth duration
+              delay: 0.7, // Delay to sync with other animations
+            }}
+            viewport={{ once: true, amount: 0.5 }} // Individual viewport trigger as fallback
+          />
+        </motion.div>
         {/* Container for the description text */}
         <div className="relative w-full ">
           <motion.div

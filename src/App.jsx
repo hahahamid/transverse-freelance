@@ -19,9 +19,7 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* <AnimatedSection> */}
-        <Hero />
-      {/* </AnimatedSection> */}
+      <Hero />
       <SubHero />
       <Translation />
       <Localization />

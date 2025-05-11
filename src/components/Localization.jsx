@@ -69,13 +69,39 @@ const Localization = () => {
         </div>
         {/* Image below the text */}
         <div>
-          <img src={image} alt="" />
+          <motion.img
+            src={image}
+            alt=""
+            initial={{ scaleX: 0, originX: 0 }} // Start scaled down from the left
+            whileInView={{ scaleX: 1 }} // Scale to full width
+            transition={{
+              type: "spring",
+              stiffness: 150,
+              damping: 10,
+              duration: 0.5, // Smooth duration
+              delay: 0.7, // Delay to sync with other animations
+            }}
+            viewport={{ once: true, amount: 0.5 }} // Trigger when 50% in view
+          />
         </div>
       </div>
 
       <div className="flex flex-col items-start text-[16px] pl-20 gap-y-10">
         <div>
-          <img src={image2} alt="" />
+          <motion.img
+            src={image2}
+            alt=""
+            initial={{ scaleX: 0, originX: 1 }} // Start scaled down from the left
+            whileInView={{ scaleX: 1 }} // Scale to full width
+            transition={{
+              type: "spring",
+              stiffness: 150,
+              damping: 10,
+              duration: 0.5, // Smooth duration
+              delay: 0.7, // Delay to sync with other animations
+            }}
+            viewport={{ once: true, amount: 0.5 }} // Trigger when 50% in view
+          />
         </div>
         {/* Container for the description text */}
         <div className="relative w-full ">
