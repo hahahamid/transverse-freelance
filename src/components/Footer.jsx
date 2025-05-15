@@ -22,7 +22,7 @@ const Footer = () => {
           type="text"
           name=""
           id=""
-          className="border-2 border-[#BADA55] rounded-full py-2 w-4/5"
+          className="border-2 border-[#BADA55] rounded-full py-2 w-4/5 px-1"
         />
         <div className="rounded-full bg-[#BADA55] text-white font-poppins text-center py-2 px-10 mt-2 w-fit cursor-pointer hover:bg-[#A8C63D] transition duration-300 ease-in-out">
           Submit
@@ -31,7 +31,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 gap-x-10 pt-10">
           <div className="flex flex-col gap-y-2">
             <div className="font-medium">Contact</div>
-            <div>contact@transverse.com</div>
+            <div>contact@transversesolutions.com</div>
             <div>91+ 9999108727</div>
             <div>Delhi</div>
           </div>
