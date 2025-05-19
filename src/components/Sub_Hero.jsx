@@ -32,7 +32,7 @@ const SubHero = () => {
   }, [isImageVisible]);
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div id="about" className="flex flex-col justify-center items-center">
       {/* Text div with hover event and height animation */}
       <div
         className={`flex justify-center items-center pt-20 transition-all duration-500 ease-in-out ${
@@ -50,7 +50,6 @@ const SubHero = () => {
       </div>
       {/* Image div with conditional rendering, animation, and hover tracking */}
       <div
-        
         className={`relative w-full transition-all duration-1000 ease-in-out transform ${
           isImageVisible
             ? "opacity-100 translate-y-0"
@@ -75,7 +74,9 @@ const SubHero = () => {
               : "opacity-0 translate-y-10"
           }`} // Animate text rising from below
         >
-          <span className="text-[200px] text-white font-urbanist">Transverse</span>
+          <span className="text-[200px] text-white font-urbanist">
+            Transverse
+          </span>
         </div>
       </div>
     </div>

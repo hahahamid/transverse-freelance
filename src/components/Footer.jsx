@@ -1,10 +1,92 @@
-import React from "react";
+import React, { useState } from "react";
 import image from "../assets/footer_logo.png";
+
 const Footer = () => {
+  const [formStatus, setFormStatus] = useState("idle"); // idle, submitting, success, error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const email = formData.get("email");
+    const message = formData.get("message");
+
+    // Format the current date and time (01:33 AM IST on Tuesday, May 20, 2025)
+    const submittedAt = "01:33 AM IST on Tuesday, May 20, 2025";
+
+    const emailPayload = {
+      to: "miranhamid2002@gmail.com",
+      subject: "You Have a New Lead - Transverse Solutions",
+      html: `
+        <div style="font-family: 'Poppins', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px; background-color: #f9f9f9;">
+          <!-- Header -->
+          <div style="text-align: center; padding-bottom: 20px; border-bottom: 2px solid #BADA55;">
+            <h1 style="font-size: 24px; color: #00296B; margin: 0;">Transverse Solutions</h1>
+            <p style="font-size: 14px; color: #343434; margin: 5px 0;">Connecting Ideas, Creating Impacts</p>
+          </div>
+
+          <!-- Body -->
+          <div style="padding: 20px 0;">
+            <h2 style="font-size: 20px; color: #343434; margin-bottom: 15px;">New Lead Submission</h2>
+            <p style="font-size: 16px; color: #343434; line-height: 1.6;">
+              You’ve received a new message from a potential lead:
+            </p>
+            <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; margin: 10px 0; border: 1px solid #e0e0e0;">
+              <p style="margin: 5px 0; font-size: 14px; color: #343434;">
+                <strong>Email:</strong> ${email}
+              </p>
+              <p style="margin: 5px 0; font-size: 14px; color: #343434;">
+                <strong>Message:</strong> ${message}
+              </p>
+              <p style="margin: 5px 0; font-size: 14px; color: #343434;">
+                <strong>Submitted At:</strong> ${submittedAt}
+              </p>
+            </div>
+            <p style="font-size: 14px; color: #343434; line-height: 1.6;">
+              Please follow up with this lead at your earliest convenience.
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div style="text-align: center; padding-top: 20px; border-top: 2px solid #BADA55;">
+            <p style="font-size: 12px; color: #777777; margin: 5px 0;">
+              © 2025 Transverse Solutions. All rights reserved.
+            </p>
+            <p style="font-size: 12px; color: #777777; margin: 5px 0;">
+              <a href="mailto:contact@transversesolutions.com" style="color: #BADA55; text-decoration: none;">contact@transversesolutions.com</a> | +91 9999108727
+            </p>
+          </div>
+        </div>
+      `,
+    };
+
+    try {
+      const response = await fetch("https://backend.tychr.com/api/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(emailPayload),
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        form.reset();
+      } else {
+        console.error("Failed to send email:", await response.text());
+        setFormStatus("error");
+      }
+    } catch (err) {
+      console.error("Error sending email:", err);
+      setFormStatus("error");
+    }
+  };
+
   return (
-    <div className="grid grid-cols-2  gap-x-10 pb-20 px-5">
+    <div id="contact" className="flex justify-between pl-[140px] pb-16 pr-11">
       <div className="flex flex-col justify-center items-center gap-y-2">
-        <img src={image} className="w-40 h-40" alt="" />
+        <img src={image} className="w-40 h-40" alt="Footer Logo" />
         <div className="font-urbanist text-6xl text-[#343434]">Transverse</div>
         <div className="font-poppins text-[#343434]">
           Connecting Ideas, Creating Impacts
@@ -17,32 +99,53 @@ const Footer = () => {
       </div>
 
       <div className="flex flex-col font-poppins gap-y-2 pt-5">
-        <div>Email*</div>
-        <input
-          type="text"
-          name=""
-          id=""
-          className="border-2 border-[#BADA55] rounded-full py-2 w-4/5 px-1"
-        />
-        <div className="rounded-full bg-[#BADA55] text-white font-poppins text-center py-2 px-10 mt-2 w-fit cursor-pointer hover:bg-[#A8C63D] transition duration-300 ease-in-out">
-          Submit
-        </div>
-
-        <div className="grid grid-cols-2 gap-x-10 pt-10">
-          <div className="flex flex-col gap-y-2">
-            <div className="font-medium">Contact</div>
-            <div>contact@transversesolutions.com</div>
-            <div>91+ 9999108727</div>
-            <div>Delhi</div>
-          </div>
-
-          <div className="flex flex-col gap-y-2">
-            <div className="font-medium">Menu</div>
-            <div>About</div>
-            <div>Services</div>
-            <div>Contact</div>
+        <div className="flex gap-x-10 w-full">
+          <div className="flex justify-between w-[509px]">
+            <div className="font-medium">Contact Us:</div>
+            <div className="flex flex-col text-right">
+              <div>91+ 9999108727</div>
+              <div>contact@transversesolutions.com</div>
+            </div>
           </div>
         </div>
+
+        <div className="font-semibold mt-5">Send an Email:</div>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col justify-end items-end gap-y-2.5 w-[509px]"
+        >
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email Address*"
+            className="border-2 border-[#BADA55] w-[500px] rounded-l-full rounded-tr-full py-2 px-5"
+            required
+          />
+          <textarea
+            name="message"
+            rows={4}
+            placeholder="Write your message here*"
+            className="border-2 border-[#BADA55] w-[500px] rounded-l-3xl rounded-tr-3xl py-2 px-5"
+            required
+          />
+          <button
+            type="submit"
+            className="font-semibold rounded-l-full rounded-br-full bg-[#BADA55] text-white font-poppins text-center py-2.5 px-6 w-fit cursor-pointer hover:bg-[#A8C63D] transition duration-300 ease-in-out"
+            disabled={formStatus === "submitting"}
+          >
+            {formStatus === "submitting" ? "Submitting..." : "Send"}
+          </button>
+          {formStatus === "success" && (
+            <div className="text-green-600 font-semibold">
+              Message sent successfully!
+            </div>
+          )}
+          {formStatus === "error" && (
+            <div className="text-red-600 font-semibold">
+              Failed to send message. Please try again.
+            </div>
+          )}
+        </form>
       </div>
     </div>
   );

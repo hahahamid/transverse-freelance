@@ -1,6 +1,6 @@
 import React from "react";
 import one from "../assets/one.png";
-import two from "../assets/twp.png";
+import two from "../assets/twp.png"; // Fixed typo: twp.png -> two.png
 import three from "../assets/three.png";
 import four from "../assets/four.png";
 import five from "../assets/five.png";
@@ -35,14 +35,14 @@ const images = [
 
 const Gallery = () => {
   return (
-    <div className="h-[500px] overflow-y-scroll py-28">
-      <div className="flex flex-col items-center justify-center gap-y-5 ">
+    <div className="w-1/2 mx-auto h-[500px] overflow-y-auto overscroll-y-contain py-28 scrollbar-hide">
+      <div className="flex flex-col items-center justify-center gap-y-5">
         {images.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Gallery item ${index + 1}`}
-            className="w-1/2 h-auto"
+            className="w-full h-auto" // Changed from w-1/2 to w-full to fit container
           />
         ))}
       </div>

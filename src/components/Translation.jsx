@@ -29,7 +29,7 @@ const Translation = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 bg-[#00296B] py-14">
+    <div id="services" className="grid grid-cols-2 bg-[#00296B] py-14">
       <div className="flex flex-col items-start text-[88px] text-white pl-20 space-y-28">
         {/* Container for the title text with relative positioning */}
         <div className="relative h-[76px]">
