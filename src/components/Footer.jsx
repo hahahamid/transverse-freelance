@@ -100,7 +100,7 @@ const Footer = () => {
 
       <div className="flex flex-col font-poppins gap-y-2 pt-5">
         <div className="flex gap-x-10 w-full">
-          <div className="flex justify-between w-[509px]">
+          <div className="flex justify-between w-full">
             <div className="font-medium">Contact Us:</div>
             <div className="flex flex-col text-right">
               <div>91+ 9999108727</div>
