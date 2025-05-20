@@ -84,7 +84,7 @@ const Footer = () => {
   };
 
   return (
-    <div id="contact" className="flex justify-between pl-[140px] pb-16 pr-11">
+    <div id="contact" className="flex justify-between pl-[140px] pr-11">
       <div className="flex flex-col justify-center items-center gap-y-2">
         <img src={image} className="w-40 h-40" alt="Footer Logo" />
         <div className="font-urbanist text-6xl text-[#343434]">Transverse</div>

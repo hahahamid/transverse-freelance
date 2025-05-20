@@ -1,15 +1,17 @@
 import React from "react";
+import footer from "../assets/footer.png";
 
 const EndFooter = () => {
   return (
-    <footer className="relative flex justify-center items-center py-3 text-white pt-5 overflow-hidden">
-      {/* Gradient background with 70% opacity */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#00296B] to-white opacity-70" />
-      {/* Text with 100% opacity */}
-      <p className="relative z-10 font-semibold text-xl font-sans">
-        Your global voice, locally tuned
-      </p>
-    </footer>
+    <div className="relative w-full">
+      <img src={footer} alt="footer background" className="w-full" />
+
+      <div className="absolute bottom-3 left-[40%] flex items-center justify-center">
+        <span className="text-white text-xl font-semibold drop-shadow-lg">
+          Your global voice, locally tuned
+        </span>
+      </div>
+    </div>
   );
 };
 
