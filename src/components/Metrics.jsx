@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, useInView } from "framer-motion";
-
+import flow from "../assets/bubble.json";
+import Lottie from "lottie-react";
 const Metrics = () => {
   // Animation variants for the boxes
   const boxVariants = {
@@ -25,7 +26,7 @@ const Metrics = () => {
     {
       borderColor: "#FDC550", // yellow-500
       borderRadius: "rounded-t-full rounded-r-full",
-      fillDirection: "bottom-left",
+      fillDirection: "top-right",
       text: "Words/Year",
       centerText: "1M+",
       textColor: "white",
@@ -33,7 +34,7 @@ const Metrics = () => {
     {
       borderColor: "#00296B",
       borderRadius: "rounded-b-full rounded-l-full",
-      fillDirection: "top-right",
+      fillDirection: "bottom-left",
       text: "Trade Fairs Promotion",
       centerText: "15",
       textColor: "white",
@@ -41,7 +42,7 @@ const Metrics = () => {
     {
       borderColor: "#FDC550",
       borderRadius: "rounded-t-full rounded-r-full",
-      fillDirection: "bottom-left",
+      fillDirection: "top-right",
       text: "Interpretation",
       centerText: "100+",
       textColor: "white",
@@ -49,7 +50,7 @@ const Metrics = () => {
     {
       borderColor: "#00296B",
       borderRadius: "rounded-b-full rounded-l-full",
-      fillDirection: "top-right",
+      fillDirection: "bottom-left",
       text: "Experts",
       centerText: "500+",
       textColor: "white",
@@ -69,7 +70,10 @@ const Metrics = () => {
         <div key={index} className="flex flex-col items-center">
           <motion.div
             className={`w-[152px] h-[152px] border-[3px] ${config.borderRadius} relative overflow-hidden`}
-            style={{ borderColor: config.borderColor, transformOrigin: "center" }}
+            style={{
+              borderColor: config.borderColor,
+              transformOrigin: "center",
+            }}
             variants={boxVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}

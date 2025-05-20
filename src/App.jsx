@@ -80,9 +80,7 @@ function App() {
           <Localization />
           <Language />
           <Tele />
-          <AnimatedSection>
-            <Divider />
-          </AnimatedSection>
+          <Divider />
           <AnimatedSection>
             <Metrics />
           </AnimatedSection>

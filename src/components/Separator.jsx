@@ -3,14 +3,110 @@ import { motion } from "framer-motion";
 
 const Separator = () => {
   // Text content for each slide
-  const text = `-.-. --- -. -. . -.-. - .. -. --. .. -.. . .- ... --..-- -.-. .-. . .- - .. -. --. .. -- .--. .- -.-. -
-  
-  -.-. --- -. -. . -.-. - .. -. --. .. -.. . .- ... --..-- -.-. .-. . .- - .. -. --. .. -- .--. .- -.-. -
-  
-  -.-. --- -. -. . -.-. - .. -. --. .. -.. . .- ... --..-- -.-. .-. . .- - .. -. --. .. -- .--. .- -.-. -
-  `;
+  const text = `-.-. --- -. -. . -.-. - .. -. --. .. -.. . .- ... --..-- -.-. .-. . .- - .. -. --. .. -- .--. .- -.-. - `;
   // Array of slides (4 identical texts)
-  const slides = [text, text, text, text];
+  const slides = [
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+    text,
+  ];
   // State to track the active slide index
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -64,7 +160,7 @@ const Separator = () => {
   };
 
   return (
-    <div className="overflow-hidden py-20">
+    <div className="overflow-hidden py-20 text-[#00296B]">
       <motion.div
         className="flex w-[100%]" // 4 slides, each 100% of parent width
         variants={containerVariants}
@@ -74,7 +170,7 @@ const Separator = () => {
         {slides.map((slide, index) => (
           <motion.div
             key={index}
-            className="flex-1 flex items-center justify-center text-xl text-nowrap"
+            className="flex-1 flex items-center justify-center text-xl text-nowrap px-10"
             variants={slideVariants}
             animate={index === activeIndex ? "active" : "inactive"}
           >

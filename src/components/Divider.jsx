@@ -2,14 +2,14 @@ import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 
 const Divider = () => {
   const riseAnimation = {
-    initial: { opacity: 0, y: 50 }, // Start 50px below and invisible
+    initial: { opacity: 0, y: -100 }, // Start 50px below and invisible
     animate: { opacity: 1, y: 0 }, // Move to original position and fully visible
     transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 7,
-      duration: 0.5, // Smooth duration for the rise
-      delay: 0.3, // Add 0.3s delay for the animation
+      type: "tween",
+      stiffness: 150,
+      damping: 15,
+      duration: 0.25, // Smooth duration for the rise
+      delay: 0.5, // Add 0.3s delay for the animation
     },
   };
   return (

@@ -48,7 +48,13 @@ const Hero = () => {
 
   return (
     <div className="flex flex-row justify-between h-auto bg-white px-[86px] pt-10">
-      <div className="flex flex-col pt-20">
+      <motion.div
+        initial={riseAnimation.initial}
+        whileInView={riseAnimation.animate}
+        transition={riseAnimation.transition}
+        viewport={{ once: true, amount: 0.5 }}
+        className="flex flex-col pt-20"
+      >
         <motion.div
           initial={riseAnimation.initial}
           whileInView={riseAnimation.animate}
@@ -69,17 +75,13 @@ const Hero = () => {
           <div>Empowering businesses</div>
           <div>worldwide</div>
         </motion.div>
-        <motion.div
-          initial={riseAnimation.initial}
-          whileInView={riseAnimation.animate}
-          transition={riseAnimation.transition}
-          viewport={{ once: true, amount: 0.5 }}
+        <div
           className="inline-block px-5 py-2.5 w-[90px] text-white text-[16px] font-bold text-center cursor-pointer
          bg-[#c5e86c] hover:bg-[#b0d35e] rounded-br-[20px] rounded-tr-[20px] rounded-bl-[20px] border-0 mt-[30px]"
         >
           call us
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
 
       <div className="flex pt-[80px]">
         <motion.div
