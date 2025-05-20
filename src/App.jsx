@@ -23,12 +23,12 @@ function App() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const hasSeenSplash = sessionStorage.getItem("hasSeenSplash");
+    // const hasSeenSplash = sessionStorage.getItem("hasSeenSplash");
 
-    if (hasSeenSplash) {
-      setShowSplash(false);
-      return;
-    }
+    // if (hasSeenSplash) {
+    //   setShowSplash(false);
+    //   return;
+    // }
 
     // Function to hide splash screen with fade-out
     const hideSplash = () => {

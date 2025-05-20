@@ -15,17 +15,18 @@ const Tele = () => {
     damping: 20, // Slightly increased damping to reduce bounciness
   };
 
-  const riseAnimation = {
+    const riseAnimation = {
     initial: { opacity: 0, y: 50 }, // Start 50px below and invisible
     animate: { opacity: 1, y: 0 }, // Move to original position and fully visible
     transition: {
       type: "spring",
-      stiffness: 100,
-      damping: 7,
-      duration: 0.5, // Smooth duration for the rise
-      delay: 0.3, // Add 0.3s delay for the animation
+      stiffness: 150,
+      damping: 15,
+      duration: 0.2, // Smooth duration for the rise
+      delay: 1, // Add 0.3s delay for the animation
     },
   };
+
 
   return (
     <div className="grid grid-cols-2 bg-white py-14">

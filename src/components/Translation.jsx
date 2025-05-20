@@ -17,14 +17,14 @@ const Translation = () => {
 
   // Animation settings for the initial rise effect
   const riseAnimation = {
-    initial: { opacity: 0, y: 50 }, // Start 50px below and invisible
+    initial: { opacity: 0, y: 100 }, // Start 50px below and invisible
     animate: { opacity: 1, y: 0 }, // Move to original position and fully visible
     transition: {
       type: "spring",
-      stiffness: 100,
-      damping: 7,
-      duration: 0.5, // Smooth duration for the rise
-      delay: 0.3, // Add 0.3s delay for the animation
+      stiffness: 150,
+      damping: 15,
+      duration: 0.2, // Smooth duration for the rise
+      delay: 1, // Add 0.3s delay for the animation
     },
   };
 

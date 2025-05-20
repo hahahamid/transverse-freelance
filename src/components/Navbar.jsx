@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
@@ -10,8 +11,26 @@ const Navbar = () => {
     }
   };
 
+  // Define the animation variants
+  const navbarVariants = {
+    hidden: { y: "-100%", opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.2,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className="relative flex justify-center items-center h-[40px] bg-[#00296B] text-white px-[58px]">
+    <motion.div
+      className="relative flex justify-center items-center h-[40px] bg-[#00296B] text-white px-[58px]"
+      variants={navbarVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="absolute left-12">
         <img src={logo} alt="Logo" className="h-[22px] w-[22px]" />
       </div>
@@ -41,7 +60,7 @@ const Navbar = () => {
           Contact
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

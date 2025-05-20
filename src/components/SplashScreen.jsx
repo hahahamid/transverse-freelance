@@ -1,4 +1,5 @@
 import React from "react";
+import image from "../assets/footer_logo.png";
 
 const SplashScreen = () => {
   return (
@@ -7,9 +8,14 @@ const SplashScreen = () => {
       aria-label="Loading splash screen"
       role="alert"
     >
-      <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to My App</h1>
-      <div className="w-10 h-10 border-4 border-t-blue-500 border-gray-200 rounded-full animate-spin"></div>
-      <p className="text-lg text-gray-600 mt-4">Click anywhere to skip</p>
+      <div className="flex flex-col justify-center items-center gap-y-2">
+        <img src={image} className="w-40 h-40" alt="Footer Logo" />
+        <div className="font-urbanist text-6xl text-[#343434]">Transverse</div>
+        <div className="font-poppins text-[#343434]">
+          Connecting Ideas, Creating Impacts
+        </div>
+      </div>
+      <p className="text-sm text-gray-600 mt-4">Click anywhere to skip</p>
     </div>
   );
 };
