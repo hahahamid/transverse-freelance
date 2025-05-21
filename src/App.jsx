@@ -40,7 +40,7 @@ function App() {
     };
 
     // Set timeout for 5 seconds
-    const timer = setTimeout(hideSplash, 5000);
+    const timer = setTimeout(hideSplash, 9000);
 
     // Add keypress event listener
     const handleKeyPress = () => {

@@ -18,7 +18,7 @@ const Footer = () => {
     const submittedAt = "01:33 AM IST on Tuesday, May 20, 2025";
 
     const emailPayload = {
-      to: "miranhamid2002@gmail.com",
+      to: "contact@transversesolutions.com",
       subject: "You Have a New Lead - Transverse Solutions",
       html: `
         <div style="font-family: 'Poppins', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px; background-color: #f9f9f9;">
